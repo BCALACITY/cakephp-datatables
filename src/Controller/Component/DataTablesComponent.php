@@ -307,6 +307,10 @@ class DataTablesComponent extends Component
                 }
             }
         }
+        // https://github.com/ypnos-web/cakephp-datatables/issues/75
+        else if (!($comparison === '=' && is_numeric($value))) {
+            return;
+            }
         $condition = ["{$table->getAlias()}.{$column}{$textCast} {$comparison}" => $value];
 
         /* add as global condition */
